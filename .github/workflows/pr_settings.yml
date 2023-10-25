@@ -1,0 +1,21 @@
+name: 🚀 Telegram Notification
+
+on:
+  pull_request:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Check out the repository
+        uses: actions/checkout@v2
+
+      - name: 🚀 Send Telegram Notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          message: |
+            🎉 Exciting news! A new PR has been raised on [GitHub](https://github.com/<user>/<repo>/pulls). Check it out now! 🚀
